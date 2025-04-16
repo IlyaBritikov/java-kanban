@@ -4,8 +4,8 @@ public class Main {
 
         System.out.println("=== Тестирование методов для обычных задач ===");
         // Создание задач
-        Task task1 = manager.addTask(new Task("Покупки", "Купить молоко и хлеб", Status.NEW));
-        Task task2 = manager.addTask(new Task("Звонок", "Позвонить другу", Status.NEW));
+        Task task1 = manager.addTask(new Task("Покупки", "Купить молоко и хлеб"));
+        Task task2 = manager.addTask(new Task("Звонок", "Позвонить другу"));
         System.out.println("Создано 2 задачи");
 
         // Получение всех задач
@@ -39,9 +39,9 @@ public class Main {
         System.out.println("Создано 2 эпика");
 
         // Создание подзадач
-        SubTask subTask1 = manager.addSubTask(new SubTask("Упаковать вещи", "Коробки, скотч", Status.NEW, epic1.getId()));
-        SubTask subTask2 = manager.addSubTask(new SubTask("Найти грузчиков", "Договориться о дате", Status.NEW, epic1.getId()));
-        SubTask subTask3 = manager.addSubTask(new SubTask("Купить билеты", "Выбрать авиакомпанию", Status.NEW, epic2.getId()));
+        SubTask subTask1 = manager.addSubTask(new SubTask("Упаковать вещи", "Коробки, скотч", epic1.getId()));
+        SubTask subTask2 = manager.addSubTask(new SubTask("Найти грузчиков", "Договориться о дате", epic1.getId()));
+        SubTask subTask3 = manager.addSubTask(new SubTask("Купить билеты", "Выбрать авиакомпанию", epic2.getId()));
         System.out.println("Создано 3 подзадачи");
 
         // Получение всех эпиков
@@ -119,13 +119,13 @@ public class Main {
                 manager.getTaskById(999));
 
         // Попытка обновить несуществующую задачу
-        Task nonExistentTask = new Task("Несуществующая", "Нет описания", Status.NEW);
+        Task nonExistentTask = new Task("Несуществующая", "Нет описания");
         nonExistentTask.setId(999);
         manager.updateTask(nonExistentTask);
         System.out.println("Попытка обновить несуществующую задачу (без ошибок)");
 
         // Попытка добавить подзадачу к несуществующему эпику
-        SubTask invalidSubTask = manager.addSubTask(new SubTask("Невалидная", "Нет эпика", Status.NEW, 999));
+        SubTask invalidSubTask = manager.addSubTask(new SubTask("Невалидная", "Нет эпика", 999));
         System.out.println("Попытка добавить подзадачу к несуществующему эпику: " + invalidSubTask);
     }
 }

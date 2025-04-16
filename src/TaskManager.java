@@ -138,8 +138,7 @@ public class TaskManager {
 
     private void updateEpicStatus(int epicId) {
         EpicTask epic = epicTasks.get(epicId);
-        if (epic == null || epic.getSubTaskIds().isEmpty()) {
-            epic.setStatus(Status.NEW);
+        if (epic == null) {
             return;
         }
 
@@ -159,11 +158,11 @@ public class TaskManager {
         }
 
         if (allDone) {
-            epic.setStatus(Status.DONE);
+            epic.forceUpdateStatus(Status.DONE);
         } else if (allNew) {
-            epic.setStatus(Status.NEW);
+            epic.forceUpdateStatus(Status.NEW);
         } else {
-            epic.setStatus(Status.IN_PROGRESS);
+            epic.forceUpdateStatus(Status.IN_PROGRESS);
         }
     }
 }
