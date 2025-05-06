@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class EpicTask extends Task {
     public void setStatus(Status status) {
         // Статус эпика нельзя изменить вручную
     }
-    protected void forceUpdateStatus (Status status) {
+    public void forceUpdateStatus (Status status) {
         if (status == null) {
             super.setStatus(Status.NEW);
             return;

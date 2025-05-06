@@ -1,3 +1,9 @@
+package manager;
+
+import model.EpicTask;
+import model.SubTask;
+import model.Task;
+
 import java.util.List;
 
 public interface TaskManager {
